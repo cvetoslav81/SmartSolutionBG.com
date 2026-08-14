@@ -1,39 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bg">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>{{ org_name }}</title>
+
   <link rel="stylesheet" href="/assets/style.css" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-  <!-- Brand colours, and the one line every page in this portal must carry.
-       It has to come after the stylesheet link so that it wins, and each page
-       needs its own copy: substitution runs on .html files only, so these
-       values cannot be moved into assets/style.css. A page missing this line
-       renders in the neutral fallback palette while its siblings are branded,
-       which reads as a bug rather than as a missing setting. -->
-  <style>:root { --sa-primary: {{ org_primary }}; --sa-accent: {{ org_accent }}; }</style>
+
+  <style>
+    :root {
+      --sa-primary: {{ org_primary }};
+      --sa-accent: {{ org_accent }};
+    }
+  </style>
+
   <script>
     if (navigator.userAgent.includes('SolarAssistant'))
       document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('embedded')
-        document.querySelectorAll('sa-sign-in, sa-sites, sa-user')
+        document.querySelectorAll('sa-sign-in, sa-register, sa-sites, sa-user')
           .forEach(el => el.classList.add('embedded'))
       })
   </script>
-  <script type="module" src="https://cdn.solar-assistant.io/js/solar-assistant.js"></script>
+
+  <!-- SolarAssistant + Български превод -->
+  <script type="module">
+    import {
+      addMessages,
+      setLocale
+    } from 'https://cdn.solar-assistant.io/js/solar-assistant.js'
+
+    addMessages('en', {
+
+      // Общи
+      email: 'Имейл',
+      password: 'Парола',
+      first_name: 'Име',
+      last_name: 'Фамилия',
+      name: 'Име',
+      description: 'Описание',
+      owner: 'Собственик',
+      role: 'Роля',
+      sites: 'Системи',
+      sign_in: 'Вход',
+      sign_out: 'Изход',
+      save: 'Запази',
+      view: 'Преглед',
+
+      // Профил
+      my_account: 'Моят акаунт',
+      phone_number: 'Телефонен номер',
+
+      // Системи
+      no_sites: 'Все още нямате регистрирани фотоволтаични системи.',
+
+      // Достъп
+      user_access: 'Потребителски достъп',
+      invite_user: 'Покани потребител',
+
+      role_owner: 'Собственик',
+      role_viewer: 'Наблюдател',
+      role_admin: 'Администратор',
+      role_none: 'Без достъп',
+
+      no_users: 'Няма потребители.',
+
+      // Система
+      connect: 'Свържи се →',
+      inverter: 'Инвертор',
+      battery: 'Батерия',
+
+      device_info: 'Информация за устройството',
+      local_ip: 'Локален IP адрес',
+
+      status: 'Състояние',
+      network_ip: 'Мрежов IP адрес',
+      connected: 'Свързано',
+      online: 'Онлайн',
+      unknown: 'Неизвестно',
+
+      last_seen: 'Последно видяно',
+      software_build: 'Версия на софтуера',
+
+      // Покани
+      invite: 'Покани',
+
+      // Регистрация на система
+      register_site: 'Регистрирай система',
+
+      // Грешки
+      connection_error:
+        'Грешка при свързването. Моля, опитайте отново.',
+
+      failed_load_site:
+        'Системата не можа да бъде заредена.'
+    })
+
+    setLocale('en')
+  </script>
+
 </head>
+
 <body>
+
   <header class="site-header hide-android">
+
     <div class="header-inner">
 
+      <!-- Лого -->
       <a class="header-logo" href="/sites">
         <img src="/assets/logo.svg" alt="{{ org_name }}" />
       </a>
 
+      <!-- Навигация -->
       <nav class="header-nav">
 
-        <a href="/sites">Моите системи</a>
+        <a href="/sites">
+          Моите системи
+        </a>
 
         <a href="https://www.smartsolutionbg.com/solarassistant.html"
            target="_blank"
@@ -41,8 +127,11 @@
           SmartSolutionBG.com
         </a>
 
-        <span class="header-separator" aria-hidden="true"></span>
+        <span class="header-separator"
+              aria-hidden="true">
+        </span>
 
+        <!-- Профил -->
         <a class="header-account"
            href="/user"
            aria-label="Профил">
@@ -52,28 +141,39 @@
                width="28"
                height="28">
 
-            <circle cx="32"
-                    cy="32"
-                    r="31"
-                    fill="var(--sa-accent)" />
+            <circle
+              cx="32"
+              cy="32"
+              r="31"
+              fill="var(--sa-accent)"
+            />
 
-            <path fill="var(--sa-primary)"
-                  d="M56.877,50.4748a31.0647,31.0647,0,0,0-49.7651-.0156,30.9669,30.9669,0,0,0,49.7651.0156Z" />
+            <path
+              fill="var(--sa-primary)"
+              d="M56.877,50.4748a31.0647,31.0647,0,0,0-49.7651-.0156,30.9669,30.9669,0,0,0,49.7651.0156Z"
+            />
 
-            <circle cx="32"
-                    cy="22"
-                    r="12"
-                    fill="var(--sa-primary)" />
+            <circle
+              cx="32"
+              cy="22"
+              r="12"
+              fill="var(--sa-primary)"
+            />
 
           </svg>
 
         </a>
 
       </nav>
+
     </div>
+
   </header>
 
+
   <main>
+
+    <!-- Заглавие -->
 
     <div style="margin-bottom:28px">
 
@@ -87,8 +187,12 @@
 
     </div>
 
+
+    <!-- SolarAssistant профил -->
+
     <sa-user sign-in="/sign_in"></sa-user>
 
   </main>
+
 </body>
 </html>
