@@ -39,15 +39,20 @@
     </div>
   </header>
   <main class="centered">
-    <h1>Sign in</h1>
-    <!-- The organization-id below is what binds this form to your account, and
-         it is the single most dangerous thing in the template to edit. A wrong
-         value does not look wrong: every page still renders correctly while
-         sign-in and registration quietly talk to somebody else's organization.
-         Leave the token as it is. It belongs on this page and on
-         register.html, and on no other page in the portal. -->
-    <sa-sign-in organization-id="{{ org_id }}" return-to="/sites"></sa-sign-in>
-    <p style="margin-top:16px;font-size:14px;color:#6b7280">New here? <a href="/register" style="color:var(--sa-primary);text-decoration:none">Create an account</a></p>
-  </main>
+  <h1>Вход в SmartSolutionBG</h1>
+
+  <p style="margin-bottom:20px;font-size:15px;color:#6b7280">
+    Мониторинг и управление на вашата фотоволтаична система
+  </p>
+
+  <sa-sign-in organization-id="{{ org_id }}" return-to="/sites"></sa-sign-in>
+
+  <p style="margin-top:16px;font-size:14px;color:#6b7280">
+    Нямате акаунт?
+    <a href="/register" style="color:var(--sa-primary);text-decoration:none">
+      Създайте акаунт
+    </a>
+  </p>
+</main>
 </body>
 </html>
