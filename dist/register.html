@@ -34,15 +34,36 @@
       </a>
     </div>
   </header>
-  <main class="centered">
-    <h1>Create account</h1>
-    <!-- The organization-id below is what binds this form to your account, and
-         it is the single most dangerous thing in the template to edit. A wrong
-         value does not look wrong: every page still renders correctly while
-         registration quietly creates accounts against somebody else's
-         organization. Leave the token as it is. It belongs on this page and on
-         sign_in.html, and on no other page in the portal. -->
-    <sa-register organization-id="{{ org_id }}" sign-in="/sign_in"></sa-register>
-  </main>
+ <main class="centered">
+
+  <h1>Създаване на акаунт</h1>
+
+  <p style="margin-bottom:8px;font-size:15px;color:#6b7280;text-align:center">
+    Регистрирайте се за достъп до вашата фотоволтаична система
+  </p>
+
+  <p style="margin-top:0;margin-bottom:20px;font-size:14px;text-align:center">
+    <a href="https://www.smartsolutionbg.com/"
+       target="_blank"
+       rel="noopener noreferrer"
+       style="color:var(--sa-primary);text-decoration:none;font-weight:600">
+      от SmartSolutionBG.com →
+    </a>
+  </p>
+
+  <sa-register
+    organization-id="{{ org_id }}"
+    sign-in="/sign_in">
+  </sa-register>
+
+  <p style="margin-top:16px;font-size:14px;color:#6b7280">
+    Вече имате акаунт?
+    <a href="/sign_in"
+       style="color:var(--sa-primary);text-decoration:none">
+      Влезте тук
+    </a>
+  </p>
+
+</main>
 </body>
 </html>
