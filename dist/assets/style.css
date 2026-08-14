@@ -1,35 +1,36 @@
-*, *::before, *::after { box-sizing: border-box; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
-html { scrollbar-gutter: stable; }
+html {
+  scrollbar-gutter: stable;
+}
 
-/* Brand colours are per-organization and arrive from the page, not from here.
-   Each page's <head> sets --sa-primary / --sa-accent on :root after this file
-   loads, so those win. The values below are the neutral fallback used when an
-   organization has no colours set, and when the template is viewed outside the
-   portal (straight from git, or in a local preview). Keep them brand-neutral:
-   this stylesheet is shared by every partner and is cached hard. */
 :root {
   --sa-primary: #475569;
   --sa-accent: rgba(71, 85, 105, 0.1);
   --sa-border: #e3e5e6;
-  --sa-radius: 6px;
+  --sa-radius: 14px;
 }
 
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
-  background: #f9fafb;
+  min-height: 100vh;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top right, var(--sa-accent), transparent 35%),
+    linear-gradient(135deg, #f8fafc 0%, #eef4f8 100%);
   color: #111827;
 }
 
-/* Auth transfer: hide the page header before first paint until the token is
-   exchanged and we redirect. The `auth-transfer` class is set on <html>
-   before first paint (see sign_in.html). The component shows its own spinner. */
-.auth-transfer .site-header { display: none; }
+/* Auth transfer */
+.auth-transfer .site-header {
+  display: none;
+}
 
 main {
-  max-width: 960px;
-  margin: 48px auto;
+  max-width: 1100px;
+  margin: 60px auto;
   padding: 0 24px;
 }
 
@@ -39,32 +40,31 @@ main.centered {
   align-items: center;
 }
 
+/* Header */
 .site-header {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.95);
   border-bottom: 1px solid #e5e7eb;
-  padding: 16px 0;
+  padding: 12px 0;
+  box-shadow: 0 2px 14px rgba(15, 23, 42, 0.04);
 }
 
 .header-inner {
-  max-width: 960px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 24px;
-  height: 56px;
+  height: 64px;
   display: flex;
   align-items: center;
 }
 
-/* The logo is sized by height so that headers line up whatever shape a partner
-   uploads. max-width is a guard for an unusually wide one: it keeps a banner
-   from crowding out the navigation, and a logo narrower than the cap is
-   untouched by it. */
 .header-logo img {
   display: block;
-  height: 56px;
+  height: 60px;
   width: auto;
-  max-width: 240px;
+  max-width: 300px;
 }
 
+/* Navigation */
 .header-nav {
   margin-left: auto;
   display: flex;
@@ -76,7 +76,8 @@ main.centered {
   text-decoration: none;
   color: #374151;
   font-weight: 500;
-  font-size: 1.1em;
+  font-size: 1rem;
+  transition: color 0.2s ease;
 }
 
 .header-nav a:hover {
@@ -103,8 +104,77 @@ body.embedded .hide-android {
   display: none;
 }
 
+/* Titles */
 h1 {
-  font-size: 22px;
-  font-weight: 600;
-  margin-bottom: 24px;
+  font-size: 30px;
+  font-weight: 700;
+  margin: 10px 0 12px;
+  color: #0f172a;
+  text-align: center;
+}
+
+/* Login/register component */
+sa-sign-in,
+sa-register {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  margin-top: 10px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow:
+    0 15px 35px rgba(15, 23, 42, 0.08),
+    0 3px 10px rgba(15, 23, 42, 0.04);
+}
+
+/* Portal content */
+sa-sites,
+sa-user {
+  display: block;
+  width: 100%;
+}
+
+/* Links */
+a {
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+
+  main {
+    margin: 35px auto;
+    padding: 0 16px;
+  }
+
+  .header-inner {
+    justify-content: center;
+    height: 58px;
+    padding: 0 16px;
+  }
+
+  .header-logo img {
+    height: 50px;
+    max-width: 240px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  sa-sign-in,
+  sa-register {
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  .header-nav {
+    gap: 14px;
+  }
 }
