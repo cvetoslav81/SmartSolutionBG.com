@@ -39,20 +39,35 @@
     </div>
   </header>
   <main class="centered">
+
   <h1>Вход в клиентски портал</h1>
 
- <p style="margin-bottom:8px;font-size:15px;color:#6b7280">
-  Мониторинг на вашата фотоволтаична система в реално време
-</p>
+  <p style="margin-bottom:8px;font-size:15px;color:#6b7280;text-align:center">
+    Мониторинг на вашата фотоволтаична система в реално време
+  </p>
 
-<p style="margin-top:0;margin-bottom:20px;font-size:14px">
-  <a href="https://www.smartsolutionbg.com/"
-     target="_blank"
-     rel="noopener noreferrer"
-     style="color:var(--sa-primary);text-decoration:none;font-weight:600">
-    от SmartSolutionBG.com →
-  </a>
-</p>
+  <p style="margin-top:0;margin-bottom:20px;font-size:14px;text-align:center">
+    <a href="https://www.smartsolutionbg.com/"
+       target="_blank"
+       rel="noopener noreferrer"
+       style="color:var(--sa-primary);text-decoration:none;font-weight:600">
+      от SmartSolutionBG.com →
+    </a>
+  </p>
+
+  <sa-sign-in
+    organization-id="{{ org_id }}"
+    return-to="/sites">
+  </sa-sign-in>
+
+  <p style="margin-top:16px;font-size:14px;color:#6b7280">
+    Нямате акаунт?
+    <a href="/register"
+       style="color:var(--sa-primary);text-decoration:none">
+      Създайте акаунт
+    </a>
+  </p>
+
 </main>
 </body>
 </html>
