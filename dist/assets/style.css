@@ -120,13 +120,7 @@ sa-register {
   width: 100%;
   max-width: 420px;
   margin-top: 10px;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-  padding: 22px;
-  box-shadow:
-    0 15px 35px rgba(15, 23, 42, 0.08),
-    0 3px 10px rgba(15, 23, 42, 0.04);
+  filter: drop-shadow(0 15px 25px rgba(15, 23, 42, 0.08));
 }
 
 /* Portal content */
